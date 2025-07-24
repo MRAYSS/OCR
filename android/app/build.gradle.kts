@@ -32,11 +32,12 @@ android {
 
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig = signingConfigs.getByName("debug")
+        signingConfig signingConfigs.getByName("debug") // Keep this for now
+        minifyEnabled false        // ✅ Disable R8 code shrinking
+        shrinkResources false      // ✅ Disable resource shrinking
         }
     }
+
 }
 
 flutter {
