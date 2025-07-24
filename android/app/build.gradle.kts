@@ -7,7 +7,9 @@ plugins {
 
 android {
     namespace = "com.example.test_ocr"
-    compileSdk = flutter.compileSdkVersion
+
+    // ✅ Set explicit SDK versions to avoid resource linking errors
+    compileSdk = 33
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
@@ -20,24 +22,20 @@ android {
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId = "com.example.test_ocr"
-        // You can update the following values to match your application needs.
-        // For more information, see: https://flutter.dev/to/review-gradle-config.
-        minSdk = flutter.minSdkVersion
-        targetSdk = flutter.targetSdkVersion
+        minSdk = 21
+        targetSdk = 33
         versionCode = flutter.versionCode
         versionName = flutter.versionName
     }
 
-   buildTypes {
-    getByName("release") {
-        signingConfig = signingConfigs.getByName("debug")
-        isMinifyEnabled = false
-        isShrinkResources = false
+    buildTypes {
+        getByName("release") {
+            signingConfig = signingConfigs.getByName("debug")
+            isMinifyEnabled = false
+            isShrinkResources = false
+        }
     }
-   }
-
 }
 
 flutter {
